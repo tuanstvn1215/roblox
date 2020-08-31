@@ -1,0 +1,53 @@
+html(lang="en")
+   head
+
+      link( rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" )
+      script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js')
+      script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js')
+
+      meta(charset="UTF-8")
+      title Roblox
+
+   body(id="listacc")
+      div.text-center
+         h1 Roblox
+      div.mt-5.container
+         p Th&ecirc;m l&#x1EDB;p .active &dstrok;&#x1EC3; k&iacute;ch ho&#x1EA1;t trang b&#x1EA5;t k&#x1EF3;:
+         ul.pagination
+            li.page-item
+               a.page-link(href='/?page=0') Đầu
+            if( currentPage > 0)
+               if(currentPage > 1)
+                  li.page-item
+                     a.page-link(href='/?page='+(currentPage-2))=(currentPage-2)
+
+               li.page-item
+                  a.page-link(href='/?page='+(currentPage-1))=(currentPage-1)
+            li.page-item.active
+               a.page-link(href='/?page=' + currentPage)=currentPage
+            if(currentPage < (pages-1))   
+               li.page-item
+                  a.page-link(href='/?page='+ (currentPage + 1) )= (currentPage + 1)
+               if(currentPage < (pages-2))   
+                  li.page-item
+                     a.page-link(href='/?page='+ (currentPage + 2) )= (currentPage + 2)
+            li.page-item
+               a.page-link(href='/?page='+(pages-1)) Cuối
+
+         table
+            each Sam in Sams
+               tr 
+                  td.pt-2
+                     p=Sam.name
+                  td.pt-2
+                     button.btn.btn-success( onclick=`copyToClipboard()` data-name=Sam.name data-btn="copy" ) Sao chép
+                  td.pt-2
+                     a.btn.btn-danger( style="color:#fff" href="/delete/" + Sam.id ) Xóa
+      script(src ='js/index.js')
+
+
+
+
+
+

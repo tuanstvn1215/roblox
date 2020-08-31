@@ -1,0 +1,112 @@
+doctype html
+head
+   meta(charset='UTF-8')
+   meta(name='viewport')
+   link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm', crossorigin='anonymous')
+   link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css', integrity='sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=', crossorigin='anonymous')
+   link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+   link(rel='stylesheet', href='css/index.css')
+   title Document
+body
+   div(style='height: 50px;')
+   .container-fluid.header-scroll
+      nav.navbar.navbar-expand-lg.navbar.navbar-light
+         a.navbar-brand(href='#')
+            img.logo(src='/img/logo.png', alt='')
+            |  oblox Shop
+         button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+            span.navbar-toggler-icon
+         #navbarSupportedContent.collapse.navbar-collapse
+            ul.navbar-nav.mr-auto
+               li.nav-item
+                  a.nav-link(href='#') Link
+               li.nav-item.dropdown
+                  a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                     Dropdown
+                  .dropdown-menu(aria-labelledby='navbarDropdown')
+                     a.dropdown-item(href='#') Action
+                     a.dropdown-item(href='#') Another action
+                     .dropdown-divider
+                     a.dropdown-item(href='#') Something else here
+               li.nav-item
+                  a.nav-link.disabled(href='#') Disabled
+            a.btn-login.btn.btn-md.btn-success(href='#', type='submit') Đăng nhập
+   .mt-3
+   .container
+      #carouselExampleIndicators.carousel.slide(data-ride='carousel')
+         ol.carousel-indicators
+            li.active(data-target='#carouselExampleIndicators', data-slide-to='0')
+            li(data-target='#carouselExampleIndicators', data-slide-to='1')
+            li(data-target='#carouselExampleIndicators', data-slide-to='2')
+         .carousel-inner
+            .carousel-item.active
+               img.d-block.w-100(src='196855.jpg', alt='First slide')
+            .carousel-item
+               img.d-block.w-100(src='How-to-download-Roblox-on-Xbox-One-for-FREE-Best (2).jpg', alt='Second slide')
+            .carousel-item
+               img.d-block.w-100(src='...', alt='Third slide')
+         a.carousel-control-prev(href='#carouselExampleIndicators', role='button', data-slide='prev')
+            span.carousel-control-prev-icon(aria-hidden='true')
+            span.sr-only Previous
+         a.carousel-control-next(href='#carouselExampleIndicators', role='button', data-slide='next')
+            span.carousel-control-next-icon(aria-hidden='true')
+            span.sr-only Next
+   // --------------------------- content --------------------
+
+   block content
+
+   div(style='height: 50px;')
+   .content
+   // Site footer
+   footer.site-footer
+      .container
+         .row
+            .col-sm-12.col-md-6
+               h6 Về chúng tôi
+                  p.text-justify Web bán nhiều mặt hàng về Roblox giá rẻ uy tín hàng đầu Việt Nam được nhiều người chứng nhận, support nhanh gọn, chuyên nghiệp. được đảm đảo bởi nhiều người, do những admin uy tín hàng đầu điều hành cam kết không làm mất thẻ của người mua.
+
+            .col-xs-6.col-md-3
+               h6 Categories
+               ul.footer-links
+                  li
+                     a(href='http://scanfcode.com/category/c-language/') C
+                  li
+                     a(href='http://scanfcode.com/category/front-end-development/') UI Design
+                  li
+                     a(href='http://scanfcode.com/category/back-end-development/') PHP
+                  li
+                     a(href='http://scanfcode.com/category/java-programming-language/') Java
+                  li
+                     a(href='http://scanfcode.com/category/android/') Android
+                  li
+                     a(href='http://scanfcode.com/category/templates/') Templates
+            .col-xs-6.col-md-3
+               h6 Link:
+               ul.footer-links
+                  li
+                     a(href='https://discord.gg/R3phQkD', target='blank') Discord
+                  li
+                     a(href='https://www.facebook.com/Shop-Beli-Devil-fruit-Steves-one-piece-1442313459234504', target='blank') Facebook
+                  li
+                     a(href='https://www.youtube.com/channel/UCp3KUgRO7lgC_wopkVI7zUg', target='blank') Youtube
+         hr
+      .container
+         .row
+            .col-md-8.col-sm-6.col-xs-12
+               p.copyright-text Khoa trần Roblox shop
+               p
+            .col-md-4.col-sm-6.col-xs-12
+               ul.social-icons
+                  li
+                     a.icons(href='https://discord.gg/R3phQkD', target='blank')
+                        img(src='/img/discord-brands.svg', alt='')
+                  li
+                     a.icons(href='https://www.facebook.com/Shop-Beli-Devil-fruit-Steves-one-piece-1442313459234504', target='blank')
+                        img(src='/img/facebook-square-brands.svg', alt='')
+                  li
+                     a.icons(href='https://www.youtube.com/channel/UCp3KUgRO7lgC_wopkVI7zUg', target='blank')
+                        img(src='/img/youtube-square-brands.svg', alt='')
+   // --------------------------- footer --------------------
+   script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js', integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN', crossorigin='anonymous')
+   script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q', crossorigin='anonymous')
+   script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl', crossorigin='anonymous')
