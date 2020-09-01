@@ -1,24 +1,38 @@
 body {
    background-color: gainsboro;
-   font-family: sans-serif;
+   font-style      : Arial;
 }
 
+
 /* -----header----- */
-.header {}
+.header {
+   padding-left    : 20px;
+   padding-right   : 20px;
+   background-color: whitesmoke;
+   border-bottom   : 1px solid gray;
+}
+
+.header .row {
+   color          : rgb(77, 77, 77);
+   display        : flex;
+   justify-content: space-between;
+
+
+}
 
 .header-scroll {
-   box-shadow: 0px 0px 5px 1px grey;
-   color: gray;
-   box-shadow: black;
-   top: 0;
-   left: 0;
+   box-shadow      : 0px 4px 4px 0px grey;
+   color           : gray;
+   box-shadow      : black;
+   top             : 0;
+   left            : 0;
    background-color: whitesmoke;
-   z-index: 1;
-   position: fixed;
+   z-index         : 1;
+   position        : sticky;
 }
 
 .top-header {
-   height: 50px;
+   height : 50px;
    z-index: 99999;
 }
 
@@ -27,33 +41,76 @@ body {
 }
 
 .navbar-brand .logo {
-   width: 35px;
+   width: 45px;
 }
 
 /* -----header---- */
 
 .cover {
-   background-image: url('./196855.jpg');
-   height: 300px;
-   background-size: cover;
+   background-image     : url('./196855.jpg');
+   height               : 300px;
+   background-size      : cover;
    background-attachment: fixed;
 }
 
-.carousel-item {
-   height: 500px;
+/* content */
+.grid-acc {
+   border          : 2px solid lightgray;
+   background-color: whitesmoke;
+   padding         : 50px;
 }
+
+
+.grid-item-contain {
+   margin-top: 10px;
+
+}
+
+.grid-item {
+   box-shadow: 0px 0px 3px 0.5px grey;
+   height    : 450px;
+
+}
+
+
+.grid-item:hover {
+   box-shadow: 0px 0px 5px 3px grey;
+
+}
+
+.buttons {
+   height          : 70px;
+   background-color: silver;
+   display         : flex;
+   align-items     : center;
+   flex-direction  : row;
+   justify-content : space-around;
+}
+
+.buttons .btn {
+   border: 0.5px solid rgb(114, 114, 114);
+}
+
+.buttons .btn:hover {
+   color           : gainsboro;
+   background-color: rgb(224, 3, 3);
+}
+
+
+/* footer */
+
 
 .site-footer {
    background-color: #16213e;
-   padding: 45px 0 20px;
-   font-size: 15px;
-   line-height: 24px;
-   color: #bbb;
+   padding         : 45px 0 20px;
+   font-size       : 15px;
+   line-height     : 24px;
+   color           : #bbb;
 }
 
 .site-footer hr {
    border-top-color: #bbb;
-   opacity: 0.5;
+   opacity         : 0.5;
 }
 
 .site-footer hr.small {
@@ -61,15 +118,9 @@ body {
 }
 
 .site-footer h6 {
-   color: #fff;
-   font-size: 16px;
+   color     : #fff;
+   font-size : 16px;
    margin-top: 5px;
-}
-
-.text-justify {
-   color: #bbb;
-   letter-spacing: 0px;
-   font-style: Arial;
 }
 
 .site-footer a {
@@ -77,13 +128,13 @@ body {
 }
 
 .site-footer a:hover {
-   color: #3366cc;
+   color          : #3366cc;
    text-decoration: none;
 }
 
 .footer-links {
    padding-left: 0;
-   list-style: none;
+   list-style  : none;
 }
 
 .footer-links li {
@@ -97,7 +148,7 @@ body {
 .footer-links a:active,
 .footer-links a:focus,
 .footer-links a:hover {
-   color: #3366cc;
+   color          : #3366cc;
    text-decoration: none;
 }
 
@@ -110,11 +161,11 @@ body {
 }
 
 .site-footer .social-icons a {
-   width: 40px;
-   height: 40px;
+   width      : 40px;
+   height     : 40px;
    line-height: 40px;
    margin-left: 6px;
-   color: white;
+   color      : white;
 }
 
 .copyright-text {
@@ -124,6 +175,7 @@ body {
 @media (max-width: 991px) {
    .site-footer [class^='col-'] {
       margin-bottom: 30px;
+
    }
 }
 
@@ -143,27 +195,27 @@ body {
 }
 
 .social-icons li {
-   display: inline-block;
+   display      : inline-block;
    margin-bottom: 1px;
 }
 
 .social-icons li.title {
-   margin-right: 15px;
+   margin-right  : 15px;
    text-transform: uppercase;
-   font-weight: 700;
-   font-size: 13px;
+   font-weight   : 700;
+   font-size     : 13px;
 }
 
 .social-icons .icons {
-   display: inline-block;
+   display     : inline-block;
    margin-right: 8px;
 }
 
 .social-icons.size-sm a {
    line-height: 34px;
-   height: 34px;
-   width: 34px;
-   font-size: 14px;
+   height     : 34px;
+   width      : 34px;
+   font-size  : 14px;
 }
 
 .social-icons .icons:hover {
@@ -172,10 +224,14 @@ body {
 
 @media (max-width: 767px) {
    .social-icons li.title {
-      display: block;
+      display     : block;
       margin-right: 0;
-      font-weight: 600;
+      font-weight : 600;
    }
+}
+
+a {
+   text-decoration: none;
 }
 
 .btn-login {}

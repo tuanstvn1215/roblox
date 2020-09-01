@@ -1,2 +1,43 @@
-extends ../layouts/header_footer.pug  
+extends ../layouts/header_footer.pug 
 block content
+   .container
+      #carouselExampleIndicators.carousel.slide(data-ride='carousel')
+         ol.carousel-indicators
+            li.active(data-target='#carouselExampleIndicators', data-slide-to='0')
+            li(data-target='#carouselExampleIndicators', data-slide-to='1')
+            li(data-target='#carouselExampleIndicators', data-slide-to='2')
+         .carousel-inner
+            .carousel-item.active
+               img.d-block.w-100(src='196855.jpg', alt='First slide')
+            .carousel-item
+               img.d-block.w-100(src='How-to-download-Roblox-on-Xbox-One-for-FREE-Best (2).jpg', alt='Second slide')
+            .carousel-item
+               img.d-block.w-100(src='...', alt='Third slide')
+         a.carousel-control-prev(href='#carouselExampleIndicators', role='button', data-slide='prev')
+            span.carousel-control-prev-icon(aria-hidden='true')
+            span.sr-only Previous
+         a.carousel-control-next(href='#carouselExampleIndicators', role='button', data-slide='next')
+            span.carousel-control-next-icon(aria-hidden='true')
+            span.sr-only Next
+   .container.mt-5
+      .grid-acc
+         .mt-5.col-sm-12
+            .row
+               for account in accounts
+                  .grid-item-contain.col-md-6.col-sm-12.col-xl-4
+                     .grid-item
+                        -var url ='/img/acc/'+account.img+'.jpg'
+                        div(style="background-size:cover; height:200px;background-image: url("+ url +");")
+                           img(style="width :100%;" src= +  + '', alt)
+                        div(style="height: 180px;background-color:saddlebrown").
+                        .buttons
+                           a.btn.btn-danger(href="#")
+                              i.fas.fa-shopping-cart
+                              |  Mua Ngay
+                           a.btn.btn-danger(href="#")
+                              i.far.fa-eye
+                              | Xem Chi Tiết
+   script(src="https://code.jquery.com/jquery-3.2.1.slim.min.js", integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN", crossorigin="anonymous")
+   script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js", integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q", crossorigin="anonymous")
+   script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js", integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl", crossorigin="anonymous")
+
