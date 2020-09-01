@@ -2,6 +2,7 @@ const bodyParser = require('body-parser')
 const express = require('express')
 const app = express()
 const fs = require('fs')
+const indexRouter = require('./routes/index.route')
 var port = 8800
 const mongoose = require('mongoose')
 const url =
@@ -35,6 +36,8 @@ app.set('views', './views')
 app.set('view engine', 'pug')
 app.get('/coppy/id:', (req, res) => {})
 
+app.use(indexRouter)
+
 app.get('/admin', async (req, res) => {
    var Sams = await AccSam.find((err) => {
       if (err) {
@@ -64,9 +67,6 @@ app.get('/admin', async (req, res) => {
       Sams: Samspages[page],
       pages: Samspages.length,
    })
-})
-app.get('/', async (req, res) => {
-   res.render("shop/index")
 })
 app.get('/delete/:id', async (req, res) => {
    console.log(req.params.id)
