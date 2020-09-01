@@ -28,8 +28,10 @@ block content
                      .grid-item
                         -var url ='/img/acc/'+account.img+'.jpg'
                         div(style="background-size:cover; height:200px;background-image: url("+ url +");")
-                           img(style="width :100%;" src= +  + '', alt)
-                        div(style="height: 180px;background-color:saddlebrown").
+                        div(class="info" style="height: 170px;")
+                           div Tên: #{account.name}
+                           div Vũ khí: #{account.weapon}
+                           div Level: #{account.level}
                         .buttons
                            a.btn.btn-danger(href="#")
                               i.fas.fa-shopping-cart
