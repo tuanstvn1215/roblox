@@ -4,6 +4,7 @@ const app = express()
 const fs = require('fs')
 const indexRouter = require('./routes/index.route')
 const loginRouter = require('./routes/login.route')
+const signupRouter = require('./routes/signup.route')
 var port = 8800
 const mongoose = require('mongoose')
 const url =
@@ -40,6 +41,7 @@ app.get('/coppy/id:', (req, res) => {})
 app.use(indexRouter)
 
 app.use(loginRouter)
+app.use(signupRouter)
 app.get('/admin', async (req, res) => {
    var Sams = await AccSam.find((err) => {
       if (err) {

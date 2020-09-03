@@ -4,12 +4,13 @@ block content
    .container.content.pt-5
       .wrap-container
          .wrap-header
-            a.wrap-header-item.item-1 Đăng Nhập
-            a.wrap-header-item.item-2(href="/signup")  Đăng Kí
-         form.form.mt-5(action="/login", method="post")
+            a.wrap-header-item.item-1(href="/login") Đăng Nhập
+            a.wrap-header-item.item-2 Đăng Kí
+         form.form.mt-5(action="/signup", method="post")
             input.form-item.item-1.border(placeholder="Nhập vào tài khoản", type="text", name="username")
             input.form-item.item-2.border(placeholder="Nhập vào mật khẩu", type="text", name="password")
-            button.form-item.item-3.border(type="submit") Đăng Nhập
+            input.form-item.item-2.border(placeholder="Nhập lại mật khẩu", type="text", name="")
+            button.form-item.item-3.border(type="submit") Đăng kí
          .login-viva
             a.viva-google(href="#") 
                i.fab.fa-google

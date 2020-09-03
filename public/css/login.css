@@ -27,7 +27,9 @@
    flex-direction : row;
 }
 
-
+.wrap-header a:link {
+   border-bottom: 1px solid gainsboro;
+}
 
 .wrap-header-item {
 
@@ -52,7 +54,7 @@
 
 .wrap-header .item-2 {
    border-top-right-radius: 15px;
-   border-bottom          : 1px solid gainsboro;
+
 }
 
 
@@ -76,6 +78,11 @@
    background-color: rgb(0, 141, 75);
 }
 
+.wrap-container .form .item-3:hover {
+   background-color: rgb(1, 100, 1);
+}
+
+
 .wrap-container .login-viva {
    margin-top     : 40px;
    display        : flex;
@@ -95,12 +102,13 @@
    background-color: tomato;
    color           : white;
    font-size       : large;
-   width           : 40%;
+   width           : 49%;
    height          : max-content;
 }
 
 .wrap-container .login-viva .viva-google:hover {
-   text-decoration: none;
+   text-decoration : none;
+   background-color: red;
 }
 
 .wrap-container .login-viva .viva-facebook {
@@ -112,10 +120,11 @@
    background-color: rgb(5, 121, 255);
    color           : white;
    font-size       : large;
-   width           : 40%;
+   width           : 49%;
    height          : max-content;
 }
 
 .wrap-container .login-viva .viva-facebook:hover {
-   text-decoration: none;
+   text-decoration : none;
+   background-color: blue;
 }
