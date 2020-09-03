@@ -7,8 +7,31 @@ block admincontent
             .item-prop Tên: #{account.name}
             .item-prop Vũ khí: #{account.weapon}
             .item-prop Level: #{account.level}
+
    .wrap-insert-form.col-6
-      form.insert-form(action="/admin/ghoul" method="post")
-         input.form-item.item-1.border(placeholder="Nhập vào tài khoản", type="text", name="username")
-         input.form-item.item-2.border(placeholder="Nhập vào mật khẩu", type="text", name="password")
-         button.form-item.item-3.border(type="submit") Đăng Nhập
+      h3.mt-3 Thêm tài khoản mới
+      form.insert-form(action="/admin/ghoul" method="post" enctype="multipart/form-data")
+         table
+            tr
+               td
+                  label.form-item Tài khoản: 
+               td
+                  input.form-item.item-1.border(placeholder="tài khoản", type="text", name="name")
+            tr
+               td
+                  label.form-item Mật khẩu: 
+               td   
+                  input.form-item.item-2.border(placeholder="mật khẩu", type="text", name="password")
+            tr
+               td
+                  label.form-item Level: 
+               td
+                  input.form-item.item-2.border(placeholder="cấp", type="text", name="level")
+            tr
+               td
+                  label.form-item Ảnh minh họa
+               td   
+                  input.form-item.item-2.border.form-control-file( type="file", name="img")
+            tr
+               td
+                  button.form-item.item-3.border(type="submit") Lưu

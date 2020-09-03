@@ -1,8 +1,34 @@
 .info-wrap {
    height          : 500px;
+   border-left     : 1px solid gainsboro;
    background-color: white;
 }
 
 .info-wrap .item {
    border-bottom: 1px solid gainsboro;
+}
+
+.wrap-insert-form {
+   text-align : center;
+   border-left: 1px solid gainsboro;
+}
+
+.wrap-insert-form .insert-form {
+   display       : flex;
+   text-align    : left;
+   align-content : center;
+   flex-direction: column;
+}
+
+.wrap-insert-form .insert-form .form-item {
+   margin-top : 5px;
+   padding-top: 5px;
+}
+
+.wrap-insert-form .insert-form .item-3 {
+   border          : none;
+   border-radius   : 5px;
+   width           : 100%;
+   color           : white;
+   background-color: rgb(78, 155, 1);
 }

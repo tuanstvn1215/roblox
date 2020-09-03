@@ -1,26 +1,28 @@
-const AccSam = require("../models/accsam.model")
-
+const AccSam = require('../models/accsam.model')
+const modelAccGhoul = require("../models/account.model")
 var accounts = [{
-      name: "108",
-      weapon: "taki",
-      level: "1000",
-      img: "1"
+      name: '108',
+      weapon: 'taki',
+      level: '1000',
+      img: '1',
    },
    {
-      name: "102",
-      weapon: "kosshi",
-      level: "2000",
-      img: "2"
-   }, {
-      name: "108",
-      weapon: "taki",
-      level: "1000",
-      img: "1"
-   }, {
-      name: "102",
-      weapon: "kosshi",
-      level: "2000",
-      img: "2"
+      name: '102',
+      weapon: 'kosshi',
+      level: '2000',
+      img: '2',
+   },
+   {
+      name: '108',
+      weapon: 'taki',
+      level: '1000',
+      img: '1',
+   },
+   {
+      name: '102',
+      weapon: 'kosshi',
+      level: '2000',
+      img: '2',
    },
 ]
 module.exports.getaccsam = async (req, res) => {
@@ -56,12 +58,8 @@ module.exports.getaccsam = async (req, res) => {
 module.exports.getIndex = (req, res) => {
    res.render('admin/index')
 }
-module.exports.postIndex = (req, res) => {
-
-}
-module.exports.postaccsam = async (req, res) => {
-
-}
+module.exports.postIndex = (req, res) => {}
+module.exports.postaccsam = async (req, res) => {}
 module.exports.getDelete = async (req, res) => {
    console.log(req.params.id)
    res.render('delete', {
@@ -79,10 +77,21 @@ module.exports.postDelete = async (req, res) => {
    })
    res.redirect('/admin')
 }
-module.exports.getGhoul = (req, res) => {
-   res.render('admin/ghoul', {
-      accounts: accounts
+module.exports.getGhoul = async (req, res) => {
+   accounts = await modelAccGhoul.find({}, err => {
+      if (err)
+         console.log(err)
    })
+   res.render('admin/ghoul', {
+      accounts: accounts,
+   })
+}
+module.exports.postGhoul = async (req, res) => {
+   console.log(req.file)
+   req.body.img = req.file.path.split("\\").slice(1).join('/')
+   console.log(req.body)
+   await modelAccGhoul.insertMany(req.body)
+   res.redirect('/admin/ghoul')
 }
 var phantrang = (item, perpage) => {
    var temp = item
