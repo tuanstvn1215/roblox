@@ -1,7 +1,7 @@
 const router = require('express').Router()
-const loginController = require('../controllers/signup.controller')
+const signupcontroller = require('../controllers/signup.controller')
 
-router.get('/signup', loginController.getIndex);
+router.get('/signup', signupcontroller.getIndex);
 router.post('/signup')
 
 module.exports = router

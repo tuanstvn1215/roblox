@@ -1,0 +1,43 @@
+extends ../layouts/admin.pug
+
+block admincontent
+   div.text-center
+      h1 Roblox
+   div.mt-5.container
+      ul.pagination
+         li.page-item
+            a.page-link(href='?page=0') Đầu
+         if( currentPage > 0)
+            if(currentPage > 1)
+               li.page-item
+                  a.page-link(href='admin/?page='+(currentPage-2))=(currentPage-2)
+
+            li.page-item
+               a.page-link(href='/admin?page='+(currentPage-1))=(currentPage-1)
+         li.page-item.active
+            a.page-link(href='/admin/?page=' + currentPage)=currentPage
+         if(currentPage < (pages-1))   
+            li.page-item
+               a.page-link(href='/admin/?page='+ (currentPage + 1) )= (currentPage + 1)
+            if(currentPage < (pages-2))   
+               li.page-item
+                  a.page-link(href='/admin/?page='+ (currentPage + 2) )= (currentPage + 2)
+         li.page-item
+            a.page-link(href='/admin/?page='+(pages-1)) Cuối
+
+      table
+         each Sam in Sams
+            tr 
+               td.pt-2
+                  p=Sam.name
+               td.pt-2
+                  button.btn.btn-success( onclick=`copyToClipboard()` data-name=Sam.name data-btn="copy" ) Sao chép
+               td.pt-2
+                  a.btn.btn-danger( style="color:#fff" href="/admin/deleteaccsam/" + Sam.id ) Xóa
+   script(src ='js/index.js')
+
+
+
+
+
+
