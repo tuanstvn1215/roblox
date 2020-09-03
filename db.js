@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const url =
    'mongodb+srv://tuanstvn1214:tuanstvn1214@cluster0.4hiz7.gcp.mongodb.net/roblox?retryWrites=true&w=majority'
+
 mongoose.connect(
    url, {
       useUnifiedTopology: true,
