@@ -1,3 +1,9 @@
 extends ./header_footer.pug
 block content
-   block admincontent
+   link(rel="stylesheet", href="/css/admin.css")
+   .container.wrap.mt-5
+      .functions
+         a.function(href="/admin/accsam") acc Sam
+         a.function(href="/admin/ghoul") ghoul
+      .content.container.row
+         block admincontent

@@ -1,0 +1,21 @@
+.wrap {
+   box-shadow      : 0px 0px 4px 1px gainsboro;
+   background-color: white;
+   display         : flex;
+   flex-direction  : row;
+}
+
+.wrap .functions {
+   width         : 25%;
+   align-content : center;
+   display       : flex;
+   flex-direction: column;
+}
+
+.wrap .functions .function {
+   border-bottom  : 1px solid gainsboro;
+   border-right   : 1px solid gainsboro;
+   color          : rgb(83, 83, 83);
+   text-decoration: none;
+   font-size      : x-large;
+}

@@ -1,5 +1,28 @@
 const AccSam = require("../models/accsam.model")
 
+var accounts = [{
+      name: "108",
+      weapon: "taki",
+      level: "1000",
+      img: "1"
+   },
+   {
+      name: "102",
+      weapon: "kosshi",
+      level: "2000",
+      img: "2"
+   }, {
+      name: "108",
+      weapon: "taki",
+      level: "1000",
+      img: "1"
+   }, {
+      name: "102",
+      weapon: "kosshi",
+      level: "2000",
+      img: "2"
+   },
+]
 module.exports.getaccsam = async (req, res) => {
    var Sams = await AccSam.find((err) => {
       if (err) {
@@ -31,7 +54,7 @@ module.exports.getaccsam = async (req, res) => {
    })
 }
 module.exports.getIndex = (req, res) => {
-
+   res.render('admin/index')
 }
 module.exports.postIndex = (req, res) => {
 
@@ -54,9 +77,13 @@ module.exports.postDelete = async (req, res) => {
          console.log(resq)
       }
    })
-   res.redirect('/')
+   res.redirect('/admin')
 }
-
+module.exports.getGhoul = (req, res) => {
+   res.render('admin/ghoul', {
+      accounts: accounts
+   })
+}
 var phantrang = (item, perpage) => {
    var temp = item
    var i = 0

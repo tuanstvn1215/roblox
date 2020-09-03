@@ -1,0 +1,14 @@
+extends ../layouts/admin.pug
+block admincontent
+   link(rel="stylesheet", href="/css/acc.css")
+   .col-6.info-wrap
+      for account in accounts
+         .item
+            .item-prop Tên: #{account.name}
+            .item-prop Vũ khí: #{account.weapon}
+            .item-prop Level: #{account.level}
+   .wrap-insert-form.col-6
+      form.insert-form(action="/admin/ghoul" method="post")
+         input.form-item.item-1.border(placeholder="Nhập vào tài khoản", type="text", name="username")
+         input.form-item.item-2.border(placeholder="Nhập vào mật khẩu", type="text", name="password")
+         button.form-item.item-3.border(type="submit") Đăng Nhập
