@@ -1,14 +1,16 @@
 body {
-
-   font-style: Arial;
+   background-color: azure;
+   font-family     : sans-serif;
 }
+
+
 
 
 /* -----header----- */
 .header {
    padding-left    : 20px;
    padding-right   : 20px;
-   background-color: whitesmoke;
+   background-color: white;
    border-bottom   : 1px solid gray;
 }
 
@@ -21,12 +23,12 @@ body {
 }
 
 .header-scroll {
-   box-shadow      : 0px 4px 4px 0px rgb(182, 182, 182);
+   box-shadow      : 0px 3px 4px 0px rgb(182, 182, 182);
    color           : gray;
    box-shadow      : black;
    top             : 0;
    left            : 0;
-   background-color: whitesmoke;
+   background-color: white;
    z-index         : 1;
    position        : sticky;
 }
@@ -56,8 +58,8 @@ body {
 
 /* content */
 .grid-acc {
-   border          : 2px solid lightgray;
-   background-color: whitesmoke;
+   border          : 1px solid lightgray;
+   background-color: white;
    padding         : 50px;
 }
 
@@ -67,8 +69,7 @@ body {
 }
 
 .grid-item {
-   background: rgb(219, 219, 0);
-   background: linear-gradient(185deg, rgba(219, 219, 0, 1) 0%, rgba(230, 170, 2, 1) 47%, rgba(213, 79, 0, 1) 100%);
+   background: rgb(255, 140, 45);
    padding   : 5px;
    box-shadow: 0px 0px 3px 0.5px grey;
    height    : 450px;
@@ -77,7 +78,7 @@ body {
 
 .grid-item:hover {
    background: rgb(255, 255, 1);
-   background: linear-gradient(180deg, rgba(255, 255, 1, 1) 0%, rgba(255, 188, 0, 1) 47%, rgba(255, 95, 0, 1) 100%);
+   background: linear-gradient(180deg, rgb(255, 255, 48) 0%, rgb(250, 202, 69) 47%, rgb(252, 132, 63) 100%);
    box-shadow: 0px 0px 5px 3px grey;
 
 }
@@ -107,10 +108,10 @@ body {
 }
 
 .buttons .btn {
-   text-shadow     : 0px 0px 5px 3px red;
-   box-shadow      : 0px 0px 1px 1px black;
-   background-color: rgb(170, 3, 3);
-   border          : 0.5px solid rgb(114, 114, 114);
+
+   border          : none;
+   background-color: rgb(255, 0, 0);
+   box-shadow      : 0px 0px 4px 1px rgb(143, 2, 2);
 }
 
 .buttons .btn:hover {

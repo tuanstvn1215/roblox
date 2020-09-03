@@ -25,8 +25,8 @@ block content
             .grid-item-contain.col-lg-6.col-sm-12.col-xl-4
                .grid-item.mt-3
                   -var url ='/img/acc/'+account.img+'.jpg'
-                  div(class="img" style="background-image: url("+ url +");")
-                  div(class="info" style="height: 170px;")
+                  .img(style="background-image: url("+ url +");")
+                  .info(style="height: 170px;")
                      div Tên: #{account.name}
                      div Vũ khí: #{account.weapon}
                      div Level: #{account.level}
