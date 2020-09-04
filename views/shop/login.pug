@@ -26,9 +26,12 @@ block content
          .wrap-signup#wrap-signup
             form.form.mt-5(action="/signup", method="post")
                input.form-item.item-2.border#signup_name(placeholder="Nhập vào tài khoản", type="text", name="username")
+               .alert.alert-danger#signup_namev Tài khoản không được bỏ trống
                input.form-item.item-2.border#signup_pass(placeholder="Nhập vào mật khẩu", type="password", name="password")
+               .alert.alert-danger#signup_passv Mật khẩu không được bỏ trống
                input.form-item.item-2.border#signup_rppass(placeholder="Nhập lại mật khẩu", type="text", name="")
-               button.form-item.item-3.border(type="submit") Đăng kí
+               .alert.alert-danger#signup_rppassv Nhập lại mật khẩu không được bỏ trống
+               button.form-item.item-3.border#signup_btn(type="submit") Đăng kí
             .login-viva
                a.viva-google(href="#") 
                   i.fab.fa-google
