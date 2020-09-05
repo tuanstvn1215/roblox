@@ -6,25 +6,29 @@ module.exports.getIndex = async (req, res) => {
 }
 
 module.exports.postIndex = async (req, res) => {
-   var user = await modelUser.findOne({ name: req.body.name }, (err) => {
+   var userdb = await modelUser.findOne({
+      name: req.body.name
+   }, (err) => {
       if (err) {
          console.log(err)
       }
    })
-   if (!user) {
+   if (!userdb) {
       res.render('shop/login', {
          errs: ['Tài khoản không tồn tại']
       })
+      return
    }
-   if (!(await Password.compare(req.body.password, user.password))) {
+   if (!(await Password.compare(req.body.password, userdb.password))) {
       res.render('shop/login', {
          errs: ['Sai mật khẩu'],
       })
+      return
    } else {
-      res.cookie('_id', user._id,{
-         signed : true,
+      res.cookie('_id', userdb._id, {
+         signed: true,
          expires: new Date(Date.now() + 3600000)
-         
+
       })
       res.redirect('/')
    }
@@ -37,28 +41,28 @@ module.exports.getSignup = async (req, res) => {
 }
 
 module.exports.postSignup = async (req, res) => {
-   try {
+   var userdb = await modelUser.findOne({
+      name: req.body.name
+   })
+   if (userdb) {
+      res.render('shop/login', {
+         errs: ['Tài khoản đã tồn tại']
+      })
+      return
+   } else {
 
-      var pass
-      pass = await Password.encrypt(req.body.password)
-      req.body.password = pass;
+      var tempuser = await modelUser.insertMany(req.body)
 
-      modelUser.insertMany(req.body,(err,user)=>{
-         infoModel.insertMany(
-            {
-            _id:user._id,
-            balance:0,
-            },(err,docs)=>{
-               console.log(docs)
-            }
-         )
-      }) 
+      await infoModel.insertMany({
+         _id: tempuser[0]._id,
+         name: tempuser[0].name,
+         balance: 0
+      })
+      res.cookie('_id', tempuser[0]._id, {
+         signed: true,
+         expires: new Date(Date.now() + 3600000)
+      })
+      res.redirect('/login')
 
-      console.log('Đăng kí thành công: ')
-      console.log(req.body)
    }
-   catch{
-      console.log("Đăng kí thất bại")
-   }
-   res.redirect('/login')
 }

@@ -33,7 +33,9 @@ body
                      a.dropdown-item(href="#") Something else here
                li.nav-item
                   a.nav-link.disabled(href="/admin") Admin
-            if !user
+            if user
+               div xin chào #{user.name}
+            else
                a.btn-login.btn.btn-md.btn-success(href="/login", type="submit") Đăng Nhập
 
    // --------------------------- content --------------------

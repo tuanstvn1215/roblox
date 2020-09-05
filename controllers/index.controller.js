@@ -1,7 +1,7 @@
 const modelAccGhoul = require("../models/account.model")
 
 module.exports.getIndex = async (req, res) => {
-   user = res.local
+   console.log(req.locals)
    accounts = await modelAccGhoul.find({}, err => {
       if (err) {
          console.log(err)
