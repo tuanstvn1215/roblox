@@ -4,11 +4,13 @@ const app = express()
 const fs = require('fs')
 const indexRouter = require('./routes/index.route')
 const loginRouter = require('./routes/login.route')
-const signupRouter = require('./routes/signup.route')
 const adminRouter = require('./routes/admin.route')
 var port = 8800
 
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({
+   extended: true
+}))
 app.use(express.static('public'))
 app.set('views', './views')
 app.set('view engine', 'pug')
@@ -16,6 +18,6 @@ app.set('view engine', 'pug')
 
 app.use(indexRouter)
 app.use(loginRouter)
-app.use(signupRouter)
 app.use(adminRouter)
+
 app.listen(process.env.PORT || port)

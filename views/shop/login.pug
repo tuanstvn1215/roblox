@@ -1,5 +1,5 @@
 extends ../layouts/header_footer.pug
-block content
+block content   
    link(rel="stylesheet", href="css/login.css")
    .container.content.pt-5
       .wrap
@@ -8,10 +8,10 @@ block content
             a.wrap-header-item.item-2 Đăng Kí
          .wrap-login#wrap-login        
             form.form.mt-5(action="/login", method="post")
-               
+               label
                input.form-item.item-2.border#login_name(placeholder="Nhập vào tài khoản", type="text", name="username")
                .alert.alert-danger#login_namev Tài khoản không được bỏ trống
-               
+               label
                input.form-item.item-2.border#login_pass(placeholder="Nhập vào mật khẩu", type="password", name="password")
                .alert.alert-danger#login_passv Mật khẩu không được bỏ trống
                button.form-item.item-3.border#login_btn(type="submit") Đăng Nhập
@@ -24,19 +24,19 @@ block content
                   span  Facebook
             .container.content.pt-5
          .wrap-signup#wrap-signup
-            form.form.mt-5(action="/signup", method="post")
+            form.form.mt-5(action="/login/signup", method="post")
                input.form-item.item-2.border#signup_name(placeholder="Nhập vào tài khoản", type="text", name="username")
                .alert.alert-danger#signup_namev Tài khoản không được bỏ trống
                input.form-item.item-2.border#signup_pass(placeholder="Nhập vào mật khẩu", type="password", name="password")
                .alert.alert-danger#signup_passv Mật khẩu không được bỏ trống
-               input.form-item.item-2.border#signup_rppass(placeholder="Nhập lại mật khẩu", type="text", name="")
+               input.form-item.item-2.border#signup_rppass(placeholder="Nhập lại mật khẩu", type="password", name="")
                .alert.alert-danger#signup_rppassv Nhập lại mật khẩu không được bỏ trống
                button.form-item.item-3.border#signup_btn(type="submit") Đăng kí
-            .login-viva
-               a.viva-google(href="#") 
-                  i.fab.fa-google
-                  span  Google
-               a.viva-facebook(href="#")
-                  i.fa.fa-facebook
-                  span  Facebook
+               .login-viva
+                  a.viva-google(href="#") 
+                     i.fab.fa-google
+                     span  Google
+                  a.viva-facebook(href="#")
+                     i.fa.fa-facebook
+                     span  Facebook
    script(src="/js/login.js")

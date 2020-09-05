@@ -1,30 +1,5 @@
 const AccSam = require('../models/accsam.model')
 const modelAccGhoul = require("../models/account.model")
-var accounts = [{
-      name: '108',
-      weapon: 'taki',
-      level: '1000',
-      img: '1',
-   },
-   {
-      name: '102',
-      weapon: 'kosshi',
-      level: '2000',
-      img: '2',
-   },
-   {
-      name: '108',
-      weapon: 'taki',
-      level: '1000',
-      img: '1',
-   },
-   {
-      name: '102',
-      weapon: 'kosshi',
-      level: '2000',
-      img: '2',
-   },
-]
 module.exports.getaccsam = async (req, res) => {
    var Sams = await AccSam.find((err) => {
       if (err) {
@@ -87,9 +62,7 @@ module.exports.getGhoul = async (req, res) => {
    })
 }
 module.exports.postGhoul = async (req, res) => {
-   console.log(req.file)
    req.body.img = req.file.path.split("\\").slice(1).join('/')
-   console.log(req.body)
    await modelAccGhoul.insertMany(req.body)
    res.redirect('/admin/ghoul')
 }
