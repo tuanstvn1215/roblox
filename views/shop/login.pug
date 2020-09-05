@@ -6,14 +6,16 @@ block content
          .wrap-header
             a.wrap-header-item.item-1 Đăng Nhập
             a.wrap-header-item.item-2 Đăng Kí
-         .wrap-login#wrap-login        
-            form.form.mt-5(action="/login", method="post")
-               label
+         .wrap-login#wrap-login     
+  
+            form.form.mt-5( method="post")
+               if errs
+                  each err in errs
+                     .alert.alert-danger=err
                input.form-item.item-2.border#login_name(placeholder="Nhập vào tài khoản", type="text", name="name")
-               .alert.alert-danger#login_namev Tài khoản không được bỏ trống
-               label
+               .alert.alert-danger.errclient#login_namev Tài khoản không được bỏ trống
                input.form-item.item-2.border#login_pass(placeholder="Nhập vào mật khẩu", type="password", name="password")
-               .alert.alert-danger#login_passv Mật khẩu không được bỏ trống
+               .alert.alert-danger.errclient#login_passv Mật khẩu không được bỏ trống
                button.form-item.item-3.border#login_btn(type="submit") Đăng Nhập
             .login-viva
                a.viva-google(href="#") 
@@ -26,11 +28,11 @@ block content
          .wrap-signup#wrap-signup
             form.form.mt-5(action="/login/signup", method="post")
                input.form-item.item-2.border#signup_name(placeholder="Nhập vào tài khoản", type="text", name="name")
-               .alert.alert-danger#signup_namev Tài khoản không được bỏ trống
+               .alert.alert-danger.errclient#signup_namev Tài khoản không được bỏ trống
                input.form-item.item-2.border#signup_pass(placeholder="Nhập vào mật khẩu", type="password", name="password")
-               .alert.alert-danger#signup_passv Mật khẩu không được bỏ trống
+               .alert.alert-danger.errclient#signup_passv Mật khẩu không được bỏ trống
                input.form-item.item-2.border#signup_rppass(placeholder="Nhập lại mật khẩu", type="password", name="")
-               .alert.alert-danger#signup_rppassv Nhập lại mật khẩu không được bỏ trống
+               .alert.alert-danger.errclient#signup_rppassv Nhập lại mật khẩu không được bỏ trống
                button.form-item.item-3.border#signup_btn(type="submit") Đăng kí
                .login-viva
                   a.viva-google(href="#") 
