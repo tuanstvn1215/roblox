@@ -73,5 +73,6 @@ module.exports.postSignup = async (req, res) => {
 }
 module.exports.getLogout = (req, res) => {
    res.clearCookie('_id')
+   res.redirect('/')
 
 }
