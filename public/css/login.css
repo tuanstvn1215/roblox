@@ -19,12 +19,14 @@
 }
 
 
-.wrap-login{
+.wrap-login {
    display: block;
 }
-.wrap-signup{
+
+.wrap-signup {
    display: none;
 }
+
 .wrap-header {
 
    display        : flex;
@@ -48,7 +50,7 @@
 
 .wrap-header-item:hover {
    text-decoration: none;
-   cursor: pointer;
+   cursor         : pointer;
 }
 
 .wrap-header .item-1 {
@@ -58,13 +60,13 @@
 
 .wrap-header .item-2 {
    border-top-right-radius: 15px;
-   border-bottom: 1px solid gainsboro;
+   border-bottom          : 1px solid gainsboro;
 
 }
 
 
 .wrap .form-item {
-   padding   : 20px;
+   padding: 20px;
 
 }
 
@@ -123,6 +125,7 @@
    text-decoration : none;
    background-color: blue;
 }
-.errclient{
+
+.errclient {
    display: none;
 }

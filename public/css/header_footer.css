@@ -47,6 +47,11 @@ body {
    height: 45px;
 }
 
+.dropdown-info {
+   left : unset;
+   right: 0;
+}
+
 /* -----header---- */
 
 .cover {

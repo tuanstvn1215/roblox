@@ -5,8 +5,8 @@ var Password = {
         var encryptPassword = await bcrypt.hash(password, salt)
         return encryptPassword
     },
-    compare: (password, encryptPassword) =>{
-        var flag =  bcrypt.compareSync(password, encryptPassword)
+    compare: (password, encryptPassword) => {
+        var flag = bcrypt.compareSync(password, encryptPassword)
         return flag
     }
 }

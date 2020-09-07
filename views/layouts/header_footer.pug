@@ -34,7 +34,14 @@ body
                li.nav-item
                   a.nav-link.disabled(href="/admin") Admin
             if user
-               div xin chào #{user.name}
+               .nav-item.dropdown
+                  .nav-link.dropdown-toggle#navbarDropdown(href="#", role="button", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false") Xin Chào #{user.name}
+                     .dropdown-menu.dropdown-info(aria-labelledby="navbarDropdown")
+                        a(href="/user")
+                        .dropdown-item(href="#") Tên: #{user.fullname}
+                        .dropdown-divider
+                        .dropdown-item Số dư: #{user.balance}
+               a.btn-login.btn.btn-md.btn-danger(href="/login/logout", type="submit") Đăng xuất
             else
                a.btn-login.btn.btn-md.btn-success(href="/login", type="submit") Đăng Nhập
 

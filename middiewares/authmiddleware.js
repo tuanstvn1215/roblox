@@ -1,4 +1,5 @@
-const Infomodel = require('../models/User.model');
+const Infomodel = require('../models/info.model');
+const Usermodel = require('../models/User.model')
 module.exports.auth = async (req, res, next) => {
     if (!req.signedCookies._id) {
         if (req.path === '/login' || req.path === '/login/signup' || req.path === '/') {
@@ -8,15 +9,25 @@ module.exports.auth = async (req, res, next) => {
             res.redirect('/login')
             return
         }
-    } else {
-        if (req.path === '/login' || req.path === '/login/signup') {
-            res.redirect('/')
+    }
+    try {
+        user = await Infomodel.findById(req.signedCookies._id)
+        if (!user) {
+            await Usermodel.findByIdAndDelete(req.signedCookies._id)
+            res.clearCookie("_id")
+            res.redirect('/login')
             return
         }
 
+    } catch {
+        console.log('auth: lỗi lấy dữ liệu');
+    }
+    if (req.path === '/login' || req.path === '/login/signup') {
+        res.redirect('/')
+        return
     }
     var user
-    user = await Infomodel.findById(req.signedCookies._id)
+    console.log(user)
     res.locals.user = user
     next()
 

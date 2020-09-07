@@ -1,11 +1,12 @@
 const express = require('express')
 const fs = require('fs')
 const cookieParser = require('cookie-parser')
-var serect='asdasdasdasd'
+const serect = 'asdasdasdasd'
 const auth = require('./middiewares/authmiddleware')
 const indexRouter = require('./routes/index.route')
 const loginRouter = require('./routes/login.route')
 const adminRouter = require('./routes/admin.route')
+const userRouter = require('./routes/user.route')
 const app = express()
 var port = 8800
 
@@ -22,7 +23,7 @@ app.use(express.static('public'))
 
 // app.get('/coppy/id:', (req, res) => {})
 app.use(auth.auth)
-
+app.use(userRouter)
 app.use(indexRouter)
 app.use(loginRouter)
 app.use(adminRouter)
