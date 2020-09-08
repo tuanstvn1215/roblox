@@ -3,6 +3,7 @@ const fs = require('fs')
 const cookieParser = require('cookie-parser')
 const serect = 'asdasdasdasd'
 const auth = require('./middiewares/authmiddleware')
+const transactionRouter = require('./routes/transaction.route')
 const indexRouter = require('./routes/index.route')
 const loginRouter = require('./routes/login.route')
 const adminRouter = require('./routes/admin.route')
@@ -15,17 +16,24 @@ app.set('view engine', 'pug')
 
 app.use(cookieParser(serect))
 app.use(express.json())
-app.use(express.urlencoded({
-   extended: true
-}))
+app.use(
+   express.urlencoded({
+      extended: true,
+   })
+)
 app.use(express.static('public'))
-
 
 // app.get('/coppy/id:', (req, res) => {})
 app.use(auth.auth)
 app.use(userRouter)
+app.use(transactionRouter)
 app.use(indexRouter)
 app.use(loginRouter)
 app.use(adminRouter)
+app.get('/account/:id', (req, res) => {
+   res.render('account/index', {
+      id: req.params.id,
+   })
+})
 
 app.listen(process.env.PORT || port)

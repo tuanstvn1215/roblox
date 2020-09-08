@@ -19,6 +19,7 @@
    flex-direction : column;
 }
 
+
 .item {
    font-size: x-large;
    color    : rgb(73, 73, 73);
@@ -32,4 +33,15 @@
    width : inherit;
    height: inherit;
 
+}
+
+#inputs {
+   display: none;
+}
+
+.itemnonne {
+   z-index         : -999;
+   color           : transparent;
+   border          : none;
+   background-color: transparent;
 }

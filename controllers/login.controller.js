@@ -1,6 +1,7 @@
-const Password = require('../function/Password')
-const modelUser = require('../models/User.model');
+const bcrypt = require('bcrypt')
+const modelUser = require('../models/User.model')
 const infoModel = require('../models/info.model')
+
 module.exports.getIndex = async (req, res) => {
    res.render('shop/login');
 }
@@ -20,21 +21,19 @@ module.exports.postIndex = async (req, res) => {
       })
       return
    }
-   if (!(await Password.compare(req.body.password, userdb.password))) {
+   var flag = await bcrypt.compare(req.body.password, userdb.password)
+   console.log(flag)
+   if (!flag) {
       res.render('shop/login', {
          errs: ['Sai mật khẩu'],
          values: req.body
       })
-      return
    }
    res.cookie('_id', userdb._id, {
       signed: true,
       expires: new Date(Date.now() + 3600000)
-
    })
    res.redirect('/')
-
-
 }
 
 
@@ -46,6 +45,7 @@ module.exports.postSignup = async (req, res) => {
    var userdb = await modelUser.findOne({
       name: req.body.name
    })
+
    if (userdb) {
       res.render('shop/login', {
          errs: ['Tài khoản đã tồn tại'],
@@ -53,9 +53,9 @@ module.exports.postSignup = async (req, res) => {
       })
       return
    }
-
+   var salt = await bcrypt.genSalt(10)
+   req.body.password = await bcrypt.hash(req.body.password, salt)
    var tempuser = await modelUser.insertMany(req.body)
-
    await infoModel.insertMany({
       _id: tempuser[0]._id,
       name: tempuser[0].name,

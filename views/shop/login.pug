@@ -14,7 +14,7 @@ block content
                      .alert.alert-danger=err
                input.form-item.item-2.border#login_name(placeholder="Nhập vào tài khoản", type="text", name="name", value= values ? values.name :'')
                .alert.alert-danger.errclient#login_namev Tài khoản không được bỏ trống
-               input.form-item.item-2.border#login_pass(placeholder="Nhập vào mật khẩu", type="password", name="password", value= values ? values.password :'')
+               input.form-item.item-2.border#login_pass(placeholder="Nhập vào mật khẩu", type="password", name="password")
                .alert.alert-danger.errclient#login_passv Mật khẩu không được bỏ trống
                button.form-item.item-3.border#login_btn(type="submit") Đăng Nhập
             .login-viva
