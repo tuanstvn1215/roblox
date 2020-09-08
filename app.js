@@ -23,7 +23,6 @@ app.use(
 )
 app.use(express.static('public'))
 
-// app.get('/coppy/id:', (req, res) => {})
 app.use(auth.auth)
 app.use(userRouter)
 app.use(transactionRouter)

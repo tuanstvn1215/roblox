@@ -7,9 +7,6 @@ module.exports.getIndex = (req, res) => {
 }
 module.exports.postIndex = async (req, res) => {
    if (req.body.email) {
-      console.log(
-         res.locals.user.name
-      )
       await Infomodel.findByIdAndUpdate(res.locals.user._id, {
          email: req.body.email
       }, {

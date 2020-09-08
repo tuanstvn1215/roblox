@@ -6,6 +6,6 @@ const RobloxaccSchema = new mongoose.Schema({
    balance_afler: Number,
    userId: String
 })
-const Trasaction = mongoose.model('Trasaction', RobloxaccSchema, 'Trasaction')
+const Trasaction = mongoose.model('Transaction', RobloxaccSchema, 'Transaction')
 
 module.exports = Trasaction

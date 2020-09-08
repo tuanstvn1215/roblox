@@ -1,11 +1,10 @@
+const phantrang = require('../function/phantrang')
+
 const AccSam = require('../models/accsam.model')
+
 const modelAccGhoul = require("../models/account.model")
 module.exports.getaccsam = async (req, res) => {
-   var Sams = await AccSam.find((err) => {
-      if (err) {
-         console.log(err)
-      } else {}
-   })
+   var Sams = await AccSam.find()
    // var acc = await fs.readFileSync('New.json', {
    //    encoding: 'utf8'
    // })
@@ -43,20 +42,11 @@ module.exports.getDelete = async (req, res) => {
 }
 
 module.exports.postDelete = async (req, res) => {
-   await AccSam.findByIdAndDelete(req.params.id, (err, resq) => {
-      if (err) {
-         console.log(err)
-      } else {
-         console.log(resq)
-      }
-   })
+   await AccSam.findByIdAndDelete(req.params.id)
    res.redirect('/admin')
 }
 module.exports.getGhoul = async (req, res) => {
-   accounts = await modelAccGhoul.find({}, err => {
-      if (err)
-         console.log(err)
-   })
+   accounts = await modelAccGhoul.find({})
    res.render('admin/ghoul', {
       accounts: accounts,
    })
@@ -65,14 +55,4 @@ module.exports.postGhoul = async (req, res) => {
    req.body.img = req.file.path.split("\\").slice(1).join('/')
    await modelAccGhoul.insertMany(req.body)
    res.redirect('/admin/ghoul')
-}
-var phantrang = (item, perpage) => {
-   var temp = item
-   var i = 0
-   var tempitem = []
-   while (i < temp.length / perpage) {
-      tempitem[i] = temp.slice(i * perpage, i * perpage + perpage)
-      i = i + 1
-   }
-   return tempitem
 }

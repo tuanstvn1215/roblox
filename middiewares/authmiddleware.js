@@ -29,7 +29,6 @@ module.exports.auth = async (req, res, next) => {
         return
     }
     var user
-    console.log(user)
     res.locals.user = user
     next()
 }

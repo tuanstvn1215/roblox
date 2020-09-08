@@ -5,6 +5,9 @@ const acconutModel = require('../models/account.model')
 module.exports.getIndex = (req, res) => {
    res.render('/acconut/index')
 }
+module.exports.getCreate = async (req, res) => {
+
+}
 module.exports.postCreate = async (req, res) => {
    var balance
    var value
