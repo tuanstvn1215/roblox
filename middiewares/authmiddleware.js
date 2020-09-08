@@ -1,5 +1,7 @@
-const Infomodel = require('../models/info.model');
+const Adminmodel = require('../models/admin.model')
+const Infomodel = require('../models/info.model')
 const Usermodel = require('../models/User.model')
+
 module.exports.auth = async (req, res, next) => {
     if (!req.signedCookies._id) {
         if (req.path === '/login' || req.path === '/login/signup' || req.path === '/') {
@@ -30,5 +32,15 @@ module.exports.auth = async (req, res, next) => {
     console.log(user)
     res.locals.user = user
     next()
+}
 
+module.exports.adminrole = async (req, res, next) => {
+    const admin = await Adminmodel.findOne({
+        userId: res.locals.user._id
+    })
+    if (admin) {
+        next()
+        return
+    }
+    res.send('Forbiden')
 }

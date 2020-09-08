@@ -29,7 +29,7 @@ app.use(userRouter)
 app.use(transactionRouter)
 app.use(indexRouter)
 app.use(loginRouter)
-app.use(adminRouter)
+app.use(auth.adminrole, adminRouter)
 app.get('/account/:id', (req, res) => {
    res.render('account/index', {
       id: req.params.id,
