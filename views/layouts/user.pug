@@ -1,0 +1,9 @@
+extends ./header_footer.pug
+block content
+   link(rel="stylesheet", href="/css/user/user.css")
+   .warp.container.mt-5
+      .user-header
+         a.item(href='/user') Thông tin
+         a.item(href='transaction') Lịch sử 
+         a.item(href='changepassword') Đổi mật khẩu
+      block usercontent

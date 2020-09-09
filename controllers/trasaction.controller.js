@@ -2,12 +2,19 @@ const infoModel = require('../models/info.model')
 const transactionModel = require('../models/transaction.model')
 const acconutModel = require('../models/account.model')
 
-module.exports.getIndex = (req, res) => {
-   res.render('/acconut/index')
+module.exports.getIndex = async (req, res) => {
+   transaction = await transactionModel.find({
+      userId: res.locals.user._id
+   })
+   res.render('shop/user/transaction', {
+      transaction: transaction
+   })
 }
-module.exports.getCreate = async (req, res) => {
 
+module.exports.getCreate = async (req, res) => {
+   res.render('shop/acconut/index')
 }
+
 module.exports.postCreate = async (req, res) => {
    var balance
    var value

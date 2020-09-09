@@ -1,27 +1,27 @@
-extends ../../layouts/header_footer.pug
-block content
+extends ../../layouts/user.pug
+block usercontent
    link(rel="stylesheet", href="/css/user/index.css")
-   .container.warp-info.mt-5
+   .container.warp-info
       .row
          .col-12.col-lg-4.pic-left
             img.pic-img(src="http://thuthuatphanmem.vn/uploads/2018/04/10/hinh-nen-ca-bien-dep_052333790.jpg")
          .col-12.col-lg-7.info-right
             .info-table
                .info-col
-                  p.item Email
-                  p.item Tên 
-                  p.item Tài khoản
-                  p.item Số dư
+                  .item Email
+                  .item Tên 
+                  .item Tài khoản
+                  .item Số dư
                .info-col
-                  p.item :
-                  p.item :
-                  p.item :
-                  p.item : 
+                  .item :
+                  .item :
+                  .item :
+                  .item : 
                .info-col#infos
-                  p.item=user.email?user.email:"Vui lòng cập nhật Email"
-                  p.item=user.fullname?user.fullname:"Vui lòng cập nhật Tên"
-                  p.item #{user.name}
-                  p.item #{user.balance}
+                  .item=user.email?user.email:"Vui lòng cập nhật Email"
+                  .item=user.fullname?user.fullname:"Vui lòng cập nhật Tên"
+                  .item #{user.name}
+                  .item #{user.balance}
                form.info-col#inputs(action="/user" method='post')
                   input.item#input-email(placeholder="Nhập vào email", type="text",value=user.email name="email")
                   input.item#input-fullname(placeholder="Nhập vào tên mới", type="text",value=user.fullname name="fullname")
@@ -34,8 +34,8 @@ block content
                      button.btn.btn-success#btn-email(type="submit") Cập nhật
                   .item
                      button.btn.btn-success#btn-fullname(type="submit") Cập nhật
-                  button.item.itemnonne.btn.btn-success(type="submit") Cập nhật
-                  button.item.itemnonne.btn.btn-success(type="submit") Cập nhật
+                  button.itemnonne.btn.btn-success(type="submit") Cập nhật
+                  button.itemnonne.btn.btn-success(type="submit") Cập nhật
    script(src="/js/user/index.js")
 
 

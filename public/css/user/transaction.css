@@ -1,0 +1,7 @@
+.tableStyle {
+   background-color: white;
+}
+
+.tableStyle tr td {
+   border: 1px solid gainsboro;
+}
