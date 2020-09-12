@@ -1,5 +1,6 @@
 .tableStyle {
    background-color: white;
+   width           : 100%;
 }
 
 .tableStyle tr td {

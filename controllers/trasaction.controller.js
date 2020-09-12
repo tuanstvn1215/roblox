@@ -3,40 +3,108 @@ const transactionModel = require('../models/transaction.model')
 const acconutModel = require('../models/account.model')
 
 module.exports.getIndex = async (req, res) => {
-   transaction = await transactionModel.find({
-      userId: res.locals.user._id
+   transactions = await transactionModel.find({
+      userId: res.locals.user._id,
    })
    res.render('shop/user/transaction', {
-      transaction: transaction
+      transactions: transactions,
    })
 }
 
 module.exports.getCreate = async (req, res) => {
-   res.render('shop/acconut/index')
+   res.render('shop/account/index', {
+      id: req.params.id
+   })
 }
 
-module.exports.postCreate = async (req, res) => {
-   var balance
-   var value
-   try {
-      var balance = res.locals.user.balance
-      var acconut = await acconutModel.findById(req.params.id)
-      console.log(acconut)
-      balance = balance - acconut.value
-      if (balance < 0) {
-         throw "tài khoản không đủ"
+module.exports.postCreate = (req, res) => {
+
+   var account
+   var tran
+   var trans
+   var user
+
+   acconutModel.findById(
+      req.params.id
+   ).then((docs) => {
+      account = docs
+      console.log("account")
+      console.log(account)
+   }).then(() => {
+      return infoModel.findById(
+         res.locals.user.id
+      )
+
+   }).then((docs) => {
+      user = docs
+      console.log("user")
+      console.log(user)
+      if (user.balance - account.value < 0) {
+         throw 'tài khoản không đủ'
       }
-      await transactionModel.insertMany({
+   }).then(() => {
+      return transactionModel.insertMany({
          Date: new Date(),
-         value: value,
-         balance_before: res.locals.user.balance,
-         balance_afler: balance,
+         value: account.value,
+         balance_before: user.balance,
+         balance_after: user.balance - account.value,
+         userId: user._id,
+         stage: 0
+      })
+   }).then((docs) => {
+      tran = docs
+      console.log("tran")
+      console.log(tran)
+
+   }).then(() => {
+      return transactionModel.find({
          userId: res.locals.user._id
       })
-      await infoModel.findByIdAndUpdate(res.locals.user.id, {
-         balance: balance
-      })
-   } catch (err) {
+   }).then((docs) => {
+      trans = docs
+      console.log("trans")
+      console.log(trans)
+   }).then(() => {
+      {
+         if (trans.length <= 1) {
+            console.log("if 1")
+            infoModel.findByIdAndUpdate(user._id, {
+                  balance: trans[trans.length - 1].balance_after
+               }, (err, docs) => {
+                  console.log("da luu")
+                  console.log(docs)
+               }
+
+            )
+            console.log("da luu")
+         } else {
+            console.log(trans[trans.length - 1])
+            console.log(trans[trans.length - 2])
+            if (trans[trans.length - 1].balance_before === trans[trans.length - 2].balance_after) {
+               console.log("if 2")
+               infoModel.findByIdAndUpdate(user._id, {
+                  balance: trans[trans.length - 1].balance_after
+               }, (err, docs) => {
+                  console.log("da luu")
+                  console.log(docs)
+               })
+            } else {
+               console.log("if 3")
+               transactionModel.findByIdAndRemove(trans[trans.length - 1]._id, (err, docs) => {
+                  console.log("loi luu da xoa")
+                  console.log(docs)
+               })
+            }
+         }
+      }
+   }).catch((err) => {
       console.log(err)
-   }
+   })
+
+   res.redirect('/')
+}
+
+
+function convertDateToUTC(date) {
+   return new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());
 }

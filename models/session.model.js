@@ -4,8 +4,7 @@ const RobloxaccSchema = new mongoose.Schema({
    value: Number,
    balance_before: Number,
    balance_after: Number,
-   userId: String,
-   stage: Number
+   userId: String
 })
 const Trasaction = mongoose.model('Transaction', RobloxaccSchema, 'Transaction')
 

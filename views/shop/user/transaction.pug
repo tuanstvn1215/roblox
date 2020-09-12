@@ -4,8 +4,19 @@ block usercontent
    table.tableStyle
       tr
          td STT
-         td Thời gian
-         td Số dư trước
-         td số dư sau
+         td trước
+         td sau
          td giá trị
+         td Thời gian
          td ghi chú
+      -var i=0
+      each transaction in transactions
+         - i =i+1
+         - transactions.value = Math.abs(transactions.balance_before - transactions.balance_after)
+         tr
+            td #{i}
+            td #{transaction.balance_before}
+            td #{transaction.balance_after}
+            td #{transactions.value}
+            td transaction
+            td transaction
