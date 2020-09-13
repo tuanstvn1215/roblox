@@ -93,7 +93,7 @@ module.exports.postCreate = (req, res) => {
             console.log(docs)
          })
       }
-      res.redirect('/')
+      // res.redirect('/')
    })
 }
 
