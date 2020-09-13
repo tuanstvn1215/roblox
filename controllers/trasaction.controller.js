@@ -28,13 +28,14 @@ module.exports.postCreate = (req, res) => {
       req.params.id
    ).then((docs) => {
       account = docs
+      if (account.stage === 1)
+         throw "acc khong ton tai"
       console.log("account")
       console.log(account)
    }).then(() => {
       return infoModel.findById(
          res.locals.user.id
       )
-
    }).then((docs) => {
       user = docs
       console.log("user")
@@ -44,16 +45,16 @@ module.exports.postCreate = (req, res) => {
       }
    }).then(() => {
       return transactionModel.insertMany({
-         Date: new Date(),
          value: account.value,
          balance_before: user.balance,
+         account: account._id,
          balance_after: user.balance - account.value,
          userId: user._id,
-         stage: 0
+         stage: 1
       })
    }).then((docs) => {
       tran = docs
-      console.log("tran")
+      console.log("tran:    ")
       console.log(tran)
 
    }).then(() => {
@@ -62,46 +63,37 @@ module.exports.postCreate = (req, res) => {
       })
    }).then((docs) => {
       trans = docs
-      console.log("trans")
-      console.log(trans)
+      if (tran[0].balance_before !== trans[trans.length - 2].balance_after)
+         throw "balance_before!=balance_after"
    }).then(() => {
-      {
-         if (trans.length <= 1) {
-            console.log("if 1")
-            infoModel.findByIdAndUpdate(user._id, {
-                  balance: trans[trans.length - 1].balance_after
-               }, (err, docs) => {
-                  console.log("da luu")
-                  console.log(docs)
-               }
+      return acconutModel.findByIdAndUpdate(tran[0].account, {
+         stage: 1
+      })
 
-            )
-            console.log("da luu")
-         } else {
-            console.log(trans[trans.length - 1])
-            console.log(trans[trans.length - 2])
-            if (trans[trans.length - 1].balance_before === trans[trans.length - 2].balance_after) {
-               console.log("if 2")
-               infoModel.findByIdAndUpdate(user._id, {
-                  balance: trans[trans.length - 1].balance_after
-               }, (err, docs) => {
-                  console.log("da luu")
-                  console.log(docs)
-               })
-            } else {
-               console.log("if 3")
-               transactionModel.findByIdAndRemove(trans[trans.length - 1]._id, (err, docs) => {
-                  console.log("loi luu da xoa")
-                  console.log(docs)
-               })
-            }
-         }
+   }).then((docs) => {
+      if (docs.stage === 1) {
+         throw "acc không tồn tại"
       }
+      console.log(docs)
+   }).then(() => {
+      return infoModel.findByIdAndUpdate(user._id, {
+         balance: tran[0].balance_after
+      })
+
+   }).then((docs) => {
+      console.log("da luu balance")
+      console.log(docs)
+      res.redirect('/')
    }).catch((err) => {
       console.log(err)
+      if (tran) {
+         transactionModel.findByIdAndRemove(tran[0]._id, (err, docs) => {
+            console.log("loi luu da xoa")
+            console.log(docs)
+         })
+      }
+      res.redirect('/')
    })
-
-   res.redirect('/')
 }
 
 

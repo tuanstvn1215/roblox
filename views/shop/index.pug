@@ -23,19 +23,20 @@ block content
    .container.grid-acc
       .row
          for account in accounts
-            .grid-item-contain.col-lg-6.col-sm-12.col-xl-4
-               .grid-item.mt-3
-                  img.img(src=account.img style="width:100%;")
-                  .info(style="height: 170px;")
-                     div Tên: #{account.name}
-                     div Vũ khí: #{account.weapon}
-                     div Level: #{account.level}
-                  .buttons
-                     a.btn.btn-danger(href="#")
-                        i.fas.fa-shopping-cart
-                        |  Mua Ngay
-                     a.btn.btn-danger(href="#")
-                        i.far.fa-eye
-                        | Xem Chi Tiết
+            if !account.stage
+               .grid-item-contain.col-lg-6.col-sm-12.col-xl-4
+                  .grid-item.mt-3
+                     img.img(src=account.img style="width:100%;")
+                     .info(style="height: 170px;")
+                        div Tên: #{account.name}
+                        div Vũ khí: #{account.weapon}
+                        div Level: #{account.level}
+                     .buttons
+                        a.btn.btn-danger(href="/transaction/account/"+account._id)
+                           i.fas.fa-shopping-cart
+                           |  Mua Ngay
+                        a.btn.btn-danger(href="#")
+                           i.far.fa-eye
+                           | Xem Chi Tiết
 
 

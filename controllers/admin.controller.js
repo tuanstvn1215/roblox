@@ -52,7 +52,9 @@ module.exports.getGhoul = async (req, res) => {
    })
 }
 module.exports.postGhoul = async (req, res) => {
-   req.body.img = req.file.path.split("\\").slice(1).join('/')
+   if (req.file) {
+      req.body.img = req.file.path.split("\\").slice(1).join('/')
+   }
    await modelAccGhoul.insertMany(req.body)
    res.redirect('/admin/ghoul')
 }

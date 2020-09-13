@@ -1,6 +1,7 @@
 extends ../../layouts/header_footer.pug
 block content
 
-   form(action='/transaction/account/'+ id , method="post")
+   form#form(action='/transaction/account/'+ id , method="post")
       div số dư sau khi thanh toán là
-      button Thanh Toán
+      button#btn-Buy Thanh Toán
+   script(src="/js/account/index.js")
