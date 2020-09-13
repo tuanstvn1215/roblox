@@ -41,6 +41,7 @@ module.exports.postCreate = (req, res) => {
       console.log("user")
       console.log(user)
       if (user.balance - account.value < 0) {
+         alert("tài khoản không đủ")
          throw 'tài khoản không đủ'
       }
    }).then(() => {
