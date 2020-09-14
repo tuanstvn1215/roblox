@@ -2,7 +2,8 @@ const phantrang = require('../function/phantrang')
 
 const AccSam = require('../models/accsam.model')
 
-const modelAccGhoul = require("../models/account.model")
+const accountModel = require("../models/account.model")
+const gameModel = require("../models/game.model")
 module.exports.getaccsam = async (req, res) => {
    var Sams = await AccSam.find()
    // var acc = await fs.readFileSync('New.json', {
@@ -32,8 +33,16 @@ module.exports.getaccsam = async (req, res) => {
 module.exports.getIndex = (req, res) => {
    res.render('admin/index')
 }
-module.exports.postIndex = (req, res) => {}
+
+module.exports.postIndex = async (req, res) => {
+   console.log(req.body)
+   await gameModel.insertMany(
+      req.body
+   )
+}
+
 module.exports.postaccsam = async (req, res) => {}
+
 module.exports.getDelete = async (req, res) => {
    console.log(req.params.id)
    res.render('delete', {
@@ -46,15 +55,11 @@ module.exports.postDelete = async (req, res) => {
    res.redirect('/admin')
 }
 module.exports.getGhoul = async (req, res) => {
-   accounts = await modelAccGhoul.find({})
+   games = await gameModel.find({})
+   accounts = await accountModel.find({})
+
    res.render('admin/ghoul', {
       accounts: accounts,
+      games: games
    })
-}
-module.exports.postGhoul = async (req, res) => {
-   if (req.file) {
-      req.body.img = req.file.path.split("\\").slice(1).join('/')
-   }
-   await modelAccGhoul.insertMany(req.body)
-   res.redirect('/admin/ghoul')
 }

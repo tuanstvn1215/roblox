@@ -1,4 +1,5 @@
 const mongoose = require('../db')
+
 const Schema = new mongoose.Schema({
    Date: {
       type: Date,
@@ -29,6 +30,12 @@ const Schema = new mongoose.Schema({
       required: true
    }
 })
+var date = () => {
+   date = new Date.now()
+   date = date.getTime() + 25200000
+   date2 = new Date(date)
+   return date2
+}
 const Trasaction = mongoose.model('Transaction', Schema, 'Transaction')
 
 module.exports = Trasaction

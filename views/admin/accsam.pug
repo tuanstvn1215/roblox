@@ -23,16 +23,16 @@ block admincontent
          li.page-item
             a.page-link(href='/admin/?page='+(pages-1)) Cuối
 
-      table
+      table#listacc
          each Sam in Sams
             tr 
                td.pt-2
                   p=Sam.name
                td.pt-2
-                  button.btn.btn-success( onclick=`copyToClipboard()` data-name=Sam.name data-btn="copy" ) Sao chép
+                  button.btn.btn-success(  data-name=Sam.name data-btn="copy" ) Sao chép
                td.pt-2
                   a.btn.btn-danger( style="color:#fff" href="/admin/deleteaccsam/" + Sam.id ) Xóa
-   script(src ='js/index.js')
+   script(src ='/js/index.js')
 
 
 

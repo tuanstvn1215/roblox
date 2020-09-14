@@ -89,7 +89,8 @@ var checkBlankSignup = () => {
     } else {
         document.getElementById('signup_passv').style.display = 'none'
     }
-    if (!signup_rppass.value) {
+
+    if (signup_rppass.value != signup_pass.value) {
         err++
         document.getElementById('signup_rppassv').style.display = 'block'
     } else {

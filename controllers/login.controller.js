@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt')
+const transactionModel = require('../models/transaction.model')
 const modelUser = require('../models/User.model')
 const infoModel = require('../models/info.model')
 
@@ -7,6 +8,16 @@ module.exports.getIndex = async (req, res) => {
 }
 
 module.exports.postIndex = async (req, res) => {
+   var patt = /\w+/;
+
+   if (req.body.name.match(patt) != req.body.name) {
+      res.render('shop/login', {
+         errs: ['Tài khoản chỉ bao gồm kí tự và số'],
+         values: req.body
+      })
+      console.log(req.body.name)
+      return
+   }
    var userdb = await modelUser.findOne({
       name: req.body.name
    }, (err) => {
@@ -53,6 +64,16 @@ module.exports.postSignup = async (req, res) => {
       })
       return
    }
+   patt = /\w+/
+   if (req.body.name.match(patt) != req.body.name) {
+      res.render('shop/login', {
+         errs: ['Tài khoản chỉ bao gồm kí tự và số'],
+         values: req.body
+      })
+      console.log(req.body.name)
+      return
+   }
+
    var salt = await bcrypt.genSalt(10)
    req.body.password = await bcrypt.hash(req.body.password, salt)
    var tempuser = await modelUser.insertMany(req.body)
@@ -63,6 +84,15 @@ module.exports.postSignup = async (req, res) => {
       email: ':',
       img: '',
       balance: 0
+   })
+
+   await transactionModel.insertMany({
+      value: '0',
+      balance_before: '0',
+      account: 'tao tai khoan',
+      balance_after: '0',
+      userId: tempuser[0]._id,
+      stage: 1
    })
    res.cookie('_id', tempuser[0]._id, {
       signed: true,

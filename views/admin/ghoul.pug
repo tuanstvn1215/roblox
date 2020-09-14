@@ -7,16 +7,24 @@ block admincontent
             .item-prop Tên: #{account.name}
             .item-prop Vũ khí: #{account.weapon}
             .item-prop Level: #{account.level}
+   div Thêm game mới
+   form(action="/admin" method='post')
+      input(placeholder="Nhập vào game mới",name='name')
+      button Lưu
 
    .wrap-insert-form.col-6
       h3.mt-3 Thêm tài khoản mới
-      form.insert-form(action="/admin/ghoul" method="post" enctype="multipart/form-data")
+      form.insert-form(action="/admin/account/create" method="post" enctype="multipart/form-data")
          table
             tr
                td
+
                   label.form-item Tên Game: 
                td
-                  input.form-item.item-1.border(placeholder="Tên Game", type="text", name="game")
+                  select.form-item#game(name='game', )
+                     if games
+                        each game in games
+                           option #{game.name}
             tr
                td
                   label.form-item Tài khoản: 

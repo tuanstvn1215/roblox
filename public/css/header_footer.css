@@ -23,7 +23,7 @@ body {
 }
 
 .header-scroll {
-
+   padding         : unset;
    box-shadow      : 0px 3px 4px 0px rgb(182, 182, 182);
    color           : gray;
    box-shadow      : black;
@@ -32,7 +32,10 @@ body {
    background-color: white;
    z-index         : 1;
    position        : sticky;
+
 }
+
+.header-scroll #btn {}
 
 .header {
    z-index: 99999;
@@ -44,8 +47,8 @@ body {
 }
 
 .navbar-brand .logo {
-   width : 35px;
-   height: 35px;
+   width : 33px;
+   height: 33px;
 }
 
 .dropdown-info {

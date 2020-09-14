@@ -12,7 +12,11 @@ module.exports.getIndex = async (req, res) => {
 }
 
 module.exports.getCreate = async (req, res) => {
+   account = await acconutModel.findById(
+      req.params.id
+   )
    res.render('shop/account/index', {
+      balance: res.locals.user.balance - account.value,
       id: req.params.id
    })
 }
@@ -28,8 +32,6 @@ module.exports.postCreate = (req, res) => {
       req.params.id
    ).then((docs) => {
       account = docs
-      if (account.stage === 1)
-         throw "acc khong ton tai"
       console.log("account")
       console.log(account)
    }).then(() => {
@@ -41,7 +43,6 @@ module.exports.postCreate = (req, res) => {
       console.log("user")
       console.log(user)
       if (user.balance - account.value < 0) {
-         alert("tài khoản không đủ tiền")
          throw 'tài khoản không đủ'
       }
    }).then(() => {
@@ -55,7 +56,7 @@ module.exports.postCreate = (req, res) => {
       })
    }).then((docs) => {
       tran = docs
-      console.log("tran:    ")
+      console.log("tran:")
       console.log(tran)
 
    }).then(() => {
@@ -67,7 +68,7 @@ module.exports.postCreate = (req, res) => {
       if (tran[0].balance_before !== trans[trans.length - 2].balance_after)
          throw "balance_before!=balance_after"
    }).then(() => {
-      return acconutModel.findByIdAndUpdate(tran[0].account, {
+      return acconutModel.findByIdAndUpdate(account._id, {
          stage: 1
       })
 
@@ -93,7 +94,10 @@ module.exports.postCreate = (req, res) => {
             console.log(docs)
          })
       }
-      // res.redirect('/')
+      res.render('shop/account/index', {
+         id: req.params.id,
+         err: err
+      })
    })
 }
 

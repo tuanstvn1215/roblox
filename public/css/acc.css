@@ -25,6 +25,11 @@
    padding-top: 5px;
 }
 
+input:focus {
+   outline: none;
+   border : 1px solid gray;
+}
+
 .wrap-insert-form .insert-form .item-3 {
    border          : none;
    border-radius   : 5px;

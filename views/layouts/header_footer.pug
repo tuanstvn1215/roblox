@@ -34,11 +34,13 @@ body
                li.nav-item
                   a.nav-link.disabled(href="/admin") Admin
             if user
-               a.nav-item(href="/user") #{user.name}
-               .nav-item Số dư: #{user.balance}
-               a.btn-login.btn.btn-md.btn-danger(href="/login/logout", type="submit") Đăng xuất
+               a.nav-item.mr-3(href="/user")
+                  i.fas.fa-user-check 
+                  span  #{user.name}
+               .nav-item.mr-3 Số dư: #{user.balance}
+               a.btn-login.btn.btn-md.btn-danger.btn-sm#btn(href="/login/logout", type="submit") Đăng xuất
             else
-               a.btn-login.btn.btn-md.btn-success(href="/login", type="submit") Đăng Nhập
+               a.btn-login.btn.btn-md.btn-success.btn-sm#btn(href="/login", type="submit") Đăng Nhập
 
    // --------------------------- content --------------------
 
