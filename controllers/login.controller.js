@@ -94,6 +94,7 @@ module.exports.postSignup = async (req, res) => {
       userId: tempuser[0]._id,
       stage: 1
    })
+
    res.cookie('_id', tempuser[0]._id, {
       signed: true,
       expires: new Date(Date.now() + 3600000)

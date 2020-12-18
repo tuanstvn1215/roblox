@@ -30,7 +30,11 @@ const RobloxaccSchema = new mongoose.Schema({
    stage: {
       type: Number,
       default: 0
-   }
+   },
+   userId: {
+      type: String,
+      default: " "
+   },
 
 })
 const account = mongoose.model('account', RobloxaccSchema, 'account')

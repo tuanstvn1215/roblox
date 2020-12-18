@@ -6,6 +6,8 @@ const upload = multer({
    dest: './public/upload/account'
 })
 
+Router.get("/admin/account", acconutController.Index)
+
 Router.post('/admin/account/create', upload.single('img'), acconutController.Create)
 
 Router.post('/admin/account/delete', acconutController.Delete)

@@ -69,6 +69,7 @@ module.exports.postCreate = (req, res) => {
          throw "balance_before!=balance_after"
    }).then(() => {
       return acconutModel.findByIdAndUpdate(account._id, {
+         userId: user._id,
          stage: 1
       })
 

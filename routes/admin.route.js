@@ -11,7 +11,7 @@ Router.post('/admin', adminController.postIndex)
 Router.get('/admin/accsam', adminController.getaccsam)
 Router.post('/admin/accsam', adminController.postaccsam)
 
-Router.get('/admin/accsam/delete/:id')
+Router.get('/admin/accsam/deleteaccsam/:id')
 
 Router.get('/admin/ghoul', adminController.getGhoul)
 
