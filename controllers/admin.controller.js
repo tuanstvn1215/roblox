@@ -39,7 +39,7 @@ module.exports.postIndex = async (req, res) => {
 module.exports.postaccsam = async (req, res) => {}
 
 module.exports.getDelete = async (req, res) => {
-	res.render('delete', {
+	res.render('admin/deleteaccsam', {
 		id: req.params.id,
 	})
 }
