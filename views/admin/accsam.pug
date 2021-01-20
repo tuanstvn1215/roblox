@@ -4,24 +4,24 @@ block admincontent
    div.mt-5.container
       ul.pagination
          li.page-item
-            a.page-link(href='?page=0') Đầu
+            a.page-link(href='/accsam?page=0') Đầu
          if( currentPage > 0)
             if(currentPage > 1)
                li.page-item
-                  a.page-link(href='.admin//accsam?page='+(currentPage-2))=(currentPage-2)
+                  a.page-link(href='/accsam?page='+(currentPage-2))=(currentPage-2)
 
             li.page-item
-               a.page-link(href='./admin/accsam?page='+(currentPage-1))=(currentPage-1)
+               a.page-link(href='/accsam?page='+(currentPage-1))=(currentPage-1)
          li.page-item.active
-            a.page-link(href='./admin/accsam?page=' + currentPage)=currentPage
+            a.page-link(href='/accsam?page=' + currentPage)=currentPage
          if(currentPage < (pages-1))   
             li.page-item
-               a.page-link(href='./admin/accsam?page='+ (currentPage + 1) )= (currentPage + 1)
+               a.page-link(href='/accsam?page='+ (currentPage + 1) )= (currentPage + 1)
             if(currentPage < (pages-2))   
                li.page-item
-                  a.page-link(href='./admin/accsam?page='+ (currentPage + 2) )= (currentPage + 2)
+                  a.page-link(href='/accsam?page='+ (currentPage + 2) )= (currentPage + 2)
          li.page-item
-            a.page-link(href='./admin/accsam?page='+(pages-1)) Cuối
+            a.page-link(href='/accsam?page='+(pages-1)) Cuối
 
       table#listacc
          each Sam in Sams
