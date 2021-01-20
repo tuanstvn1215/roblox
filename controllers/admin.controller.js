@@ -33,14 +33,12 @@ module.exports.getIndex = (req, res) => {
 }
 
 module.exports.postIndex = async (req, res) => {
-	console.log(req.body)
 	await gameModel.insertMany(req.body)
 }
 
 module.exports.postaccsam = async (req, res) => {}
 
 module.exports.getDelete = async (req, res) => {
-	console.log(req.params.id)
 	res.render('delete', {
 		id: req.params.id,
 	})
