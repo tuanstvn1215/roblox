@@ -1,9 +1,6 @@
-html(lang="en")
-   head
-      link( rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" )
-      meta(charset="UTF-8")
-      title Roblox
-   body
+extends ../layouts/admin.pug
+
+block admincontent 
       table 
          form.d-inline-block(action='/admin/accsam/deleteaccsam/'+ id, method='POST')
             tr
