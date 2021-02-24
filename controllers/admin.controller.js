@@ -41,12 +41,14 @@ module.exports.postaccsam = async (req, res) => {}
 module.exports.getDelete = async (req, res) => {
 	res.render('admin/deleteaccsam', {
 		id: req.params.id,
+		page: req.query.page,
 	})
 }
 
 module.exports.postDelete = async (req, res) => {
 	await AccSam.findByIdAndDelete(req.params.id)
-	res.redirect('/admin')
+	let page = req.query.page
+	res.redirect('/admin/accsam?page='+page)
 }
 module.exports.getGhoul = async (req, res) => {
 	games = await gameModel.find({})
